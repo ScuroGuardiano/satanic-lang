@@ -1,0 +1,26 @@
+controller /api/demons {
+    DemonDTO get /:name {
+        const demon = await db.findById(Demon, name);
+
+        // Using await in handler turns in into async automatically
+        // And returned type to Promise<T>, without the need of expliciply
+        // specifing function as async and setting it return type to Promise
+
+        return this.demonToDTO(demon);
+    }
+
+    DemonDTO post / (body: AddDemonDTO) {
+        let demon = new Demon() {
+            name: body.name
+        }
+
+        demon = await db.save(demon);
+        return this.demonToDTO(demon);
+    }
+
+    DemonDTO demonToDTO(Demon demon) {
+        return {
+            name: demon.name
+        }
+    }
+}

@@ -1,0 +1,7 @@
+dto DemonDTO {
+    string name;
+}
+
+dto AddDemonDTO {
+    string @maxLength(64) @minLength(8) name;
+}

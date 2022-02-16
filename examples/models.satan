@@ -1,0 +1,15 @@
+model Weapon {
+    varchar 256 name;
+    int 32 damage;
+    int 32 level;
+    OneToOne demon -> Demon;
+}
+
+model Demon {
+    varchar 256 name;
+    OneToOne weapon -> Weapon;
+
+    beforeSave {
+        print(`Saving demon ${this.name}...`);
+    }
+}

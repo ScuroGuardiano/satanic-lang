@@ -1,0 +1,7 @@
+hail satan { // Entry point
+    print("Hello world");
+    print(process.args); // Arguments and env accessed like in Node.js
+    print(process.env);
+
+    process.exit(1);
+}
